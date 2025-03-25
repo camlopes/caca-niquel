@@ -34,6 +34,14 @@ public class Main {
             System.out.println("Rodando...");
             simbolosSorteados = rodando();
             printRodada(simbolosSorteados);
+            lucro = getLucro(simbolosSorteados, aposta);
+
+            if(lucro > 0){
+                System.out.println("Voce ganhou $" + lucro);
+                saldo += lucro;
+            } else {
+                System.out.println("Voce perdeu essa rodada");
+            }
         }
 
         scanner.close();
@@ -52,7 +60,41 @@ public class Main {
     }
 
     static void printRodada(String[] simbolosSorteados){
+        System.out.println("**************");
         System.out.println(" " + String.join(" | ", simbolosSorteados));
-        System.out.println("*************************");
+        System.out.println("**************");
+    }
+
+    static int getLucro(String[] simbolosSorteados, int aposta){
+
+        if(simbolosSorteados[0].equals(simbolosSorteados[1]) && simbolosSorteados[1].equals(simbolosSorteados[2])){
+            return switch(simbolosSorteados[0]){
+                case "🍒" -> aposta * 3;
+                case "🍉" -> aposta * 4;
+                case "🍋" -> aposta * 5;
+                case "🔔" -> aposta * 10;
+                case "⭐" -> aposta * 20;
+                default -> 0;
+            };
+        } else if(simbolosSorteados[0].equals(simbolosSorteados[1])){
+            return switch(simbolosSorteados[0]){
+                case "🍒" -> aposta * 2;
+                case "🍉" -> aposta * 3;
+                case "🍋" -> aposta * 4;
+                case "🔔" -> aposta * 5;
+                case "⭐" -> aposta * 10;
+                default -> 0;
+            };
+        } else if(simbolosSorteados[1].equals(simbolosSorteados[2])){
+            return switch(simbolosSorteados[1]){
+                case "🍒" -> aposta * 2;
+                case "🍉" -> aposta * 3;
+                case "🍋" -> aposta * 4;
+                case "🔔" -> aposta * 5;
+                case "⭐" -> aposta * 10;
+                default -> 0;
+            };
+        }
+        return 0;
     }
 }

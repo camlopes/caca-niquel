@@ -7,7 +7,7 @@ public class Main {
         int saldo = 100;
         int aposta;
         int lucro;
-        String[] simbolos = {};
+        String[] simbolosSorteados = {};
 
         Scanner scanner = new Scanner(System.in);
 
@@ -32,7 +32,8 @@ public class Main {
             }
 
             System.out.println("Rodando...");
-            rodando();
+            simbolosSorteados = rodando();
+            printRodada(simbolosSorteados);
         }
 
         scanner.close();
@@ -48,5 +49,10 @@ public class Main {
         }
 
         return rodada;
+    }
+
+    static void printRodada(String[] simbolosSorteados){
+        System.out.println(" " + String.join(" | ", simbolosSorteados));
+        System.out.println("*************************");
     }
 }

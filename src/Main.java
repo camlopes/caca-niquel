@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ public class Main {
         int aposta;
         int lucro;
         String[] simbolosSorteados = {};
+        String jogarNovamente;
 
         Scanner scanner = new Scanner(System.in);
 
@@ -20,6 +22,7 @@ public class Main {
             System.out.println("Valor atual do saldo: R$" + saldo);
             System.out.print("Digite um valor de aposta: ");
             aposta = scanner.nextInt();
+            scanner.nextLine();
 
             if(aposta > saldo){
                 System.out.println("Saldo insuficiente");
@@ -42,7 +45,16 @@ public class Main {
             } else {
                 System.out.println("Voce perdeu essa rodada");
             }
+
+            System.out.print("Voce quer jogar novamente? (s/n): ");
+            jogarNovamente = scanner.nextLine().toLowerCase();
+
+            if(!jogarNovamente.equals("s")) {
+                break;
+            }
         }
+
+        System.out.println("GAME OVER! Seu saldo final é R$" + saldo);
 
         scanner.close();
     }

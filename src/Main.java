@@ -105,6 +105,15 @@ public class Main {
                 case "⭐" -> aposta * 10;
                 default -> 0;
             };
+        } else if(simbolosSorteados[0].equals(simbolosSorteados[2])) {
+            return switch (simbolosSorteados[0]) {
+                case "🍒" -> aposta * 2;
+                case "🍉" -> aposta * 3;
+                case "🍋" -> aposta * 4;
+                case "🔔" -> aposta * 5;
+                case "⭐" -> aposta * 10;
+                default -> 0;
+            };
         }
         return 0;
     }
